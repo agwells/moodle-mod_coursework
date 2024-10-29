@@ -199,7 +199,7 @@ class multi_marker_feedback_sub_rows implements sub_rows_interface {
         $icon = new pix_icon('edit', $linktitle, 'coursework');
         $link_id = "edit_feedback_" . $feedback_row->get_feedback()->id;
         $link = $this->get_router()
-            ->get_path('ajax edit feedback', array('feedback' => $feedback_row->get_feedback()));
+            ->get_path('edit feedback', array('feedback' => $feedback_row->get_feedback()));
         $iconlink = $OUTPUT->action_icon($link, $icon, null, array('id' => $link_id, 'class' => 'edit_feedback'));
         return $iconlink;
     }
@@ -238,7 +238,12 @@ class multi_marker_feedback_sub_rows implements sub_rows_interface {
         $iconlink = $OUTPUT->action_link($link,
                                          $linktitle,
                                          null,
-                                         array('class'=>'show_feedback','id' => $link_id));
+                                         array(
+                                            'target' => '_blank',
+                                            'class'=>'show_feedback',
+                                            'id' => $link_id
+                                        )
+                                  );
         return $iconlink;
     }
 
@@ -260,11 +265,15 @@ class multi_marker_feedback_sub_rows implements sub_rows_interface {
             'assessor' => user::find($USER, false),
             'stage' => $feedback_row->get_stage()
         );
-        $link = $this->get_router()->get_path('ajax new feedback', $new_feedback_params);
+        $link = $this->get_router()->get_path('new feedback', $new_feedback_params);
         $iconlink = $OUTPUT->action_link($link,
                                          $linktitle,
                                          null,
-                                         array('class'=>'new_feedback'));
+                                         array(
+                                            'target'=>'_blank',
+                                            'class'=>'new_feedback'
+                                        )
+                                  );
         return $iconlink;
     }
 

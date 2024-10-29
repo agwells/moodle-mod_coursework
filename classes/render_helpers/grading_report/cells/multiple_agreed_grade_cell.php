@@ -76,12 +76,13 @@ class multiple_agreed_grade_cell extends cell_base {
             $feedback_route_params = array(
                 'feedback' => $finalfeedback
             );
-            $link = $this->get_router()->get_path('ajax edit feedback', $feedback_route_params);
+            $link = $this->get_router()->get_path('edit feedback', $feedback_route_params);
 
             $iconlink = $OUTPUT->action_icon($link,
                                              $icon,
                                              null,
                                              array(
+                                                 'target' => '_blank',
                                                  'class' => 'edit_final_feedback',
                                                  'id' => 'edit_final_feedback_' . $rowobject->get_coursework()
                                                      ->get_allocatable_identifier_hash($rowobject->get_allocatable())));
@@ -104,12 +105,14 @@ class multiple_agreed_grade_cell extends cell_base {
                     'assessor' => $USER,
                     'stage' => $this->stage,
                 );
-                $link = $this->get_router()->get_path('ajax new final feedback', $feedback_route_params);
+                $link = $this->get_router()->get_path('new final feedback', $feedback_route_params);
 
                 $iconlink = $OUTPUT->action_link($link,
                                                  $title,
                                                  null,
-                                                 array('class'=>'new_final_feedback',
+                                                 array(
+                                                       'target' => '_blank',
+                                                       'class'=>'new_final_feedback',
                                                        'id' => 'new_final_feedback_' . $rowobject->get_coursework()
                                                         ->get_allocatable_identifier_hash($rowobject->get_allocatable())));
 

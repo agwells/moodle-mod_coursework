@@ -718,7 +718,7 @@ $(document).ready(function () {
         /**
          * Feedback
          */
-        $('.datatabletest').on('click', '.new_final_feedback, .new_feedback, .edit_final_feedback, .edit_feedback, .show_feedback', function (e) {
+        $('.datatabletest').on('click', '.show_feedback', function (e) {
             e.preventDefault();
             var url = $(this).attr('href');
             $.ajax({
